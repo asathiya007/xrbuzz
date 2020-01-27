@@ -2,18 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>XR Spinosaurus</title>
+    <title>XR Buzz</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
 
     <script>
-        // WebXR requires HTTPS, so the site doesn't work if someone manually enters
-        // the URL and ends up using HTTP. To work around this, force redirect from
-        // http to https for non-localhost addresses.
+        // enforce https
         if (window.location.protocol == "http:" &&
             window.location.hostname != "localhost" &&
             window.location.hostname != "127.0.0.1" &&
@@ -22,20 +19,15 @@
         }
     </script>
 
-    <!-- import the webpage's javascript files -->
+    <!-- import A-Frame code -->
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
     <script
         src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 
     <script>
-        // Define a few custom components useful for AR mode. While these are somewhat reusable,
-        // I recommend checking if there are officially supported alternatives before copying
-        // these into new projects.
 
-        // See also https://github.com/aframevr/aframe/pull/4356
         AFRAME.registerComponent('hide-in-ar-mode', {
-            // Set this object invisible while in AR mode.
             init: function () {
                 this.el.sceneEl.addEventListener('enter-vr', (ev) => {
                     this.wasVisible = this.el.getAttribute('visible');
@@ -49,39 +41,35 @@
             }
         });
 
-        AFRAME.registerComponent('ar-shadows', {
-            // Swap an object's material to a transparent shadows-only material while
-            // in AR mode. Intended for use with a ground plane. The object is also
-            // set visible while in AR mode, this is useful if it's hidden in other
-            // modes due to them using a 3D environment.
-            schema: {
-                opacity: { default: 0.3 }
-            },
-            init: function () {
-                this.el.sceneEl.addEventListener('enter-vr', (ev) => {
-                    this.wasVisible = this.el.getAttribute('visible');
-                    if (this.el.sceneEl.is('ar-mode')) {
-                        this.savedMaterial = this.el.object3D.children[0].material;
-                        this.el.object3D.children[0].material = new THREE.ShadowMaterial();
-                        this.el.object3D.children[0].material.opacity = this.data.opacity;
-                        this.el.setAttribute('visible', true);
-                    }
-                });
-                this.el.sceneEl.addEventListener('exit-vr', (ev) => {
-                    if (this.savedMaterial) {
-                        this.el.object3D.children[0].material = this.savedMaterial;
-                        this.savedMaterial = null;
-                    }
-                    if (!this.wasVisible) this.el.setAttribute('visible', false);
-                });
-            }
-        });    
+        // AFRAME.registerComponent('ar-shadows', {
+        //     schema: {
+        //         opacity: { default: 0.3 }
+        //     },
+        //     init: function () {
+        //         this.el.sceneEl.addEventListener('enter-vr', (ev) => {
+        //             this.wasVisible = this.el.getAttribute('visible');
+        //             if (this.el.sceneEl.is('ar-mode')) {
+        //                 this.savedMaterial = this.el.object3D.children[0].material;
+        //                 this.el.object3D.children[0].material = new THREE.ShadowMaterial();
+        //                 this.el.object3D.children[0].material.opacity = this.data.opacity;
+        //                 this.el.setAttribute('visible', true);
+        //             }
+        //         });
+        //         this.el.sceneEl.addEventListener('exit-vr', (ev) => {
+        //             if (this.savedMaterial) {
+        //                 this.el.object3D.children[0].material = this.savedMaterial;
+        //                 this.savedMaterial = null;
+        //             }
+        //             if (!this.wasVisible) this.el.setAttribute('visible', false);
+        //         });
+        //     }
+        // });    
     </script>
 </head>
 
 <body>
 
-    <a-scene>
+    <a-scene ar>
         <a-assets timeout="30000">
             <!-- Model source: https://sketchfab.com/3d-models/spinosaurus-2135501583704537907645bf723685e7
              Model author: https://sketchfab.com/VapTor
