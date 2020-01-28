@@ -12,6 +12,10 @@ a-scene, video {
 
 #button-controls {
     z-index: 3;
+}
+
+#button-controls > button {
+    z-index: 3;
     position: relative;
 }
 
