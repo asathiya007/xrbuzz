@@ -6,9 +6,14 @@ a-scene, video {
     }
 
 /* #button-controls {
-    z-index: 1; 
+    z-index: 3; 
     position: absolute; 
 } */
+
+#button-controls {
+    z-index: 3;
+    position: relative;
+}
 
 video
 {
