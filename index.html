@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/style.css">
 
     <script>
-        // enforce https
         if (window.location.protocol == "http:" &&
             window.location.hostname != "localhost" &&
             window.location.hostname != "127.0.0.1" &&
@@ -18,15 +17,11 @@
             window.location = window.location.href.replace('http:', 'https:');
         }
     </script>
-
-    <!-- import A-Frame code -->
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
     <script
         src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
-
     <script>
-
         AFRAME.registerComponent('hide-in-ar-mode', {
             init: function () {
                 this.el.sceneEl.addEventListener('enter-vr', (ev) => {
@@ -41,9 +36,19 @@
             }
         });    
     </script>
+    <script src="./buzz-component.js"></script>
 </head>
 
 <body>
+    <div id="button-controls">
+        Controls
+        <button class="moveLeft">Move Left</button>
+        <button class="moveRight">Move Right</button>
+        <button class="moveUp">Move Up</button>
+        <button class="moveDown">Move Down</button>
+        <button class="moveForward">Move Forward</button>
+        <button class="moveBackward">Move Backward</button>
+    </div>
     <a-scene ar>
         <a-assets timeout="30000">
             <a-asset-item id="buzz"
@@ -51,13 +56,13 @@
                 crossorigin="anonymous"></a-asset-item>
         </a-assets>
 
-        <a-camera position="0 4 0"></a-camera>
+        <a-camera position="0 2 3" wasd-controls-enabled="false"></a-camera>
 
         <a-entity environment="preset: forest; lighting: none; shadow: none; lightPosition: 0 2.15 0" hide-in-ar-mode>
         </a-entity>
 
-        <a-entity id="xrbuzz" position="-1 0 -3" scale="0.5 0.5 0.5">
-            <a-entity position="0 0 0" rotation="0 0 0" gltf-model="#buzz" animation-mixer
+        <a-entity id="xrbuzz" buzz position="0 0 -3" scale="0.5 0.5 0.5">
+            <a-entity position="0 0 0" rotation="0 -10 0" gltf-model="#buzz" animation-mixer
                 shadow="cast: true; receive: false"></a-entity>
         </a-entity>
 
@@ -70,11 +75,11 @@
                       shadowCameraBottom: -5;
                       shadowCameraTop: 5;" id="light" target="dino" position="-5 3 1.5"></a-light>
 
-        <!-- This shadow-receiving plane is only visible in AR mode. -->
         <a-plane height="15" width="15" position="0 0 -3" rotation="-90 0 0" shadow="receive: true"
             ar-shadows="opacity: 0.3" visible="false"></a-plane>
     </a-scene>
-
+    <script src="keycontrols.js"></script>
+    <script src="buttons.js"></script>
 </body>
 
 </html>
