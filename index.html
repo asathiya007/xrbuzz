@@ -40,11 +40,16 @@
     </script>
     <script src="./buzz-component.js"></script>
 
+    <style>
+    #button-controls > button {
+        z-index: 3;
+        position: relative;
+    }
+    </style>
 </head>
 
 <body>
     <div id="button-controls">
-        Controls
         <button class="moveLeft btn btn-light">Move Left</button>
         <button class="moveRight btn btn-light">Move Right</button>
         <button class="moveUp btn btn-light">Move Up</button>

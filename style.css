@@ -1,22 +1,8 @@
 a-scene, video {
-      height:100%;
-      width:100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-/* #button-controls {
-    z-index: 3; 
-    position: absolute; 
-} */
-
-#button-controls {
-    z-index: 3;
-}
-
-#button-controls > button {
-    z-index: 3;
-    position: relative;
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 video
