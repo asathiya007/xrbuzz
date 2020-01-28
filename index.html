@@ -44,7 +44,6 @@
 </head>
 
 <body>
-    <video autoplay></video>
     <a-scene ar>
         <a-assets timeout="30000">
             <a-asset-item id="buzz"
@@ -54,8 +53,8 @@
 
         <a-camera position="0 1.2 0"></a-camera>
 
-        <!-- <a-entity environment="preset: forest; lighting: none; shadow: none; lightPosition: 0 2.15 0" hide-in-ar-mode>
-        </a-entity> -->
+        <a-entity environment="preset: forest; lighting: none; shadow: none; lightPosition: 0 2.15 0" hide-in-ar-mode>
+        </a-entity>
 
         <a-entity id="xrbuzz" position="-1 0 -3" scale="0.5 0.5 0.5">
             <a-entity position="0 2.15 0" rotation="0 55 0" gltf-model="#buzz" animation-mixer
@@ -76,7 +75,6 @@
             ar-shadows="opacity: 0.3" visible="false"></a-plane>
     </a-scene>
 
-    <script src="video.js"></script>
 </body>
 
 </html>
