@@ -5,10 +5,10 @@ a-scene, video {
       object-position: center;
     }
 
-#button-controls {
+/* #button-controls {
     z-index: 1; 
     position: absolute; 
-}
+} */
 
 video
 {
