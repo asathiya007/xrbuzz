@@ -5,6 +5,11 @@ a-scene, video {
     object-position: center;
 }
 
+#button-controls > button {
+    z-index: 3;
+    position: relative;
+}
+
 video
 {
     transform: rotateY(180deg);
