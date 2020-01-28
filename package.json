@@ -1,0 +1,22 @@
+{
+  "name": "xrbuzz",
+  "version": "1.0.0",
+  "description": "A depiction of the GT mascot Buzz in XR",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asathiya007/xrbuzz.git"
+  },
+  "author": "Akshay Sathiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asathiya007/xrbuzz/issues"
+  },
+  "homepage": "https://github.com/asathiya007/xrbuzz#readme",
+  "dependencies": {
+    "aframe-ar": "^0.2.1-a"
+  }
+}
